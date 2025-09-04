@@ -1,0 +1,61 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ model }};
+use Illuminate\Support\Facades\Log;
+
+class {{ class }}
+{
+    /**
+     * Handle the {{ modelName }} "created" event.
+     */
+    public function creating({{ modelName }} $model): void
+    {
+        Log::info('{{ modelName }} created', ['id' => $model->id]);
+    }
+    public function created({{ modelName }} $model): void
+    {
+        Log::info('{{ modelName }} created', ['id' => $model->id]);
+    }
+
+    /**
+     * Handle the {{ modelName }} "updated" event.
+     */
+    public function updating({{ modelName }} $model): void
+    {
+        Log::info('{{ modelName }} updated', ['id' => $model->id]);
+    }
+    public function updated({{ modelName }} $model): void
+    {
+        Log::info('{{ modelName }} updated', ['id' => $model->id]);
+    }
+
+    /**
+     * Handle the {{ modelName }} "deleted" event.
+     */
+    public function deleted({{ modelName }} $model): void
+    {
+        Log::warning('{{ modelName }} deleted', ['id' => $model->id]);
+    }
+    public function deleting({{ modelName }} $model): void
+    {
+        Log::warning('{{ modelName }} deleted', ['id' => $model->id]);
+    }
+
+    /**
+     * Handle the {{ modelName }} "restored" event.
+     */
+    public function restored({{ modelName }} $model): void
+    {
+        Log::info('{{ modelName }} restored', ['id' => $model->id]);
+    }
+
+    /**
+     * Handle the {{ modelName }} "forceDeleted" event.
+     */
+    public function forceDeleted({{ modelName }} $model): void
+    {
+        Log::error('{{ modelName }} force deleted', ['id' => $model->id]);
+    }
+}

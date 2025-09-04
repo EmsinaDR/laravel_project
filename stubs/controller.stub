@@ -1,0 +1,52 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Models\Admin\Etapel;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+
+class {{ class }} extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+     /*
+    php artisan cache:clear
+    php artisan config:clear
+    php artisan route:clear
+    php artisan view:clear
+    php artisan optimize:clear
+
+
+
+
+     */
+    //controllernew
+    public function index()
+    {
+        //
+        // Title to Controller
+        $title = '{{ title }}';
+        $arr_ths = [
+            'title_tabela',
+            'title_tabelab',
+            'title_tabelac',
+            'title_tabelad',
+        ];
+        $breadcrumb = 'Menu_breadcrumb / {{ title }}';
+        $titleviewModal = 'Lihat Data {{ title }}';
+        $titleeditModal = 'Edit Data {{ title }}';
+        $titlecreateModal = 'Create Data {{ title }}';
+
+        // Mendapatkan data berdasarkan kondisi tertentu
+        $etapels = Etapel::where('aktiv', 'Y')->first();
+        $datas = {{ model }}::where('tapel_id', $etapels->id)->get();
+
+        return view('{{ view_path }}', compact('datas',
+            'title', 'arr_ths', 'breadcrumb', 'titleviewModal', 'titleeditModal', 'titlecreateModal'));
+    }
+}

@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        //
+        Schema::create('database_name', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nama_vendor')->nullable();
+            $table->timestamps();
+
+            // $table->foreign('tapel_id')->references('id')->on('etapels')->onDelete('set null');
+            // $table->foreign('detailguru_is')->references('id')->on('detailgurus')->onDelete('set null');
+        });
+
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        //
+    }
+};
+/*
+
+
+
+
+*/

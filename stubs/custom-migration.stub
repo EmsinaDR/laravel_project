@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up()
+    {
+
+        if (Schema::hasTable('{{ table }}')) {
+            Schema::dropIfExists('{{ table }}');
+        }
+
+        if (Schema::hasTable('{{ table }}')) {
+            Schema::dropIfExists('{{ table }}');
+        }
+        Schema::dropIfExists('{{ table }}');
+        Schema::create('{{ table }}', function (Blueprint $table) {
+            $table->id();
+                {{ data }}
+            $table->string('keterangan')->nullable();
+            $table->timestamps();
+            //$table->foreign('kelas_id')->references('id')->on('ekelas')->onDelete('set null');
+            //$table->foreign('petugas_id')->references('id')->on('detailgurus')->onDelete('set null');
+        });
+        echo "\n✅ Proses migrasi {{ table }} selesai.\n";
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('{{ table }}');
+    }
+};
+
+
+/*
+
+php artisan migrate:rollback --path=/database/migrations/{{ fileMigrationName }}
+php artisan migrate --path=/database/migrations/{{ fileMigrationName }}
+
+
+*/

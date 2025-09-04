@@ -1,0 +1,18 @@
+<?php
+
+namespace {{ namespace }};
+
+{{ factoryImport }}
+use Illuminate\Database\Eloquent\Model;
+
+class {{ class }} extends Model
+{
+    {{ factory }}
+    protected $table = 'siswa';
+    protected $fillable = [
+            'field_one',
+            'field_two',
+    
+    
+        ];
+}

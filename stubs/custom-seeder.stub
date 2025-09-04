@@ -1,0 +1,53 @@
+<?php
+
+namespace {{ model_namespace }};
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
+use Faker\Factory as Faker;
+use Carbon\Carbon;
+use App\Models\Admin\Etapel;
+
+
+class {{ class }} extends Seeder
+{
+    public function run(): void
+    {
+        $faker = Faker::create('id_ID');
+
+        $randomCreatedAt = Carbon::now()->startOfMonth()->addDays(rand(0, Carbon::now()->day - 1));
+        $randomUpdatedAt = $randomCreatedAt->copy()->addMinutes(rand(10, 300));
+
+        // Optional: relasi yang bisa dipakai
+        $etapels = \App\Models\Admin\Etapel::where('aktiv', 'Y')->first();
+        // $Gurus = \App\Models\User\Guru\Detailguru::get();
+        // $Siswas = \App\Models\User\Siswa\Detailsiswa::get();
+
+        Schema::disableForeignKeyConstraints();
+        {{ model_class }}::truncate();
+        Schema::enableForeignKeyConstraints();
+        $dataArray = [
+           {{ PembentukArray }}
+           {{ PembentukArray }}
+           {{ PembentukArray }}
+        ];
+        // Contoh data dummy
+        foreach ($dataArray as $Data):
+        {{ model_class }}::create([
+            // 'field' => 'value',
+            {{ data }}
+            'created_at' => $randomCreatedAt,
+            'updated_at' => $randomUpdatedAt,
+        ]);
+        endforeach;
+    }
+}
+
+/*
+
+
+php artisan db:seed --class={{ model_namespace }}\{{ class }}
+
+
+
+*/

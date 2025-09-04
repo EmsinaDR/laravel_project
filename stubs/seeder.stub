@@ -1,0 +1,76 @@
+<?php
+
+namespace {{ namespace }};
+
+use Carbon\Carbon;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
+
+class {{ class }} extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        //
+    $faker = Faker::create('id_ID'); //Simpan didalam code run
+        $randomCreatedAt = Carbon::now()->startOfMonth()->addDays(rand(0, Carbon::now()->day - 1));
+        $randomUpdatedAt = $randomCreatedAt->copy()->addMinutes(rand(10, 300));
+        $CounterData = 1;
+        $TotalData = count($Siswas);
+        echo "\n🔢 Data Penerima PIP.\n";
+        echo "\n🔢 Jumlah Data : $TotalData.\n";
+        echo "\n___________________________________\n";
+
+        //  DB::table('supervisi_rpp')->truncate();
+        //  foreach($Datas as $Datas):
+        //     DB::table('supervisi_rpp')->insert([
+        //         'tapel_id' => 8,
+        //         'created_at' => $randomCreatedAt,
+        //         'updated_at' => $randomUpdatedAt,
+
+        //     ]);
+            $CounterData++;
+            echo "\r Data Ke {$CounterData}";
+
+        // endforeach;
+
+        //for($i=0; $i < $xxxxxxxxxxx; $i++){
+        //    DB::table('xxxxx')->insert([
+        //        'barang_id' => xxxxx,
+        //    ]);
+        //}
+        echo "\n___________________________________\n";
+        $this->command->info("✅ Seeder PenerimaPIPSeeder berhasil dijalankan!");
+
+    }
+}
+/*
+
+
+
+
+
+php artisan db:seed --class={{ namespace }}\{{ class }}
+
+
+
+
+
+
+
+
+
+$randomCreatedAt = Carbon::now()->startOfMonth()->addDays(rand(0, Carbon::now()->day - 1));
+$randomUpdatedAt = $randomCreatedAt->copy()->addMinutes(rand(10, 300));
+
+DB::table('etugas')->insert([
+    'created_at' => $randomCreatedAt,
+    'updated_at' => $randomUpdatedAt,
+]);
+
+*/
